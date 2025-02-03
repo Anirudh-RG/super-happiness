@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         BASH = 'C:\\Users\\Anirudh\\AppData\\Local\\Programs\\Git\\bin\\bash.exe'
-        AWS_CREDS = 'anirudh-aws-creds'
+        
     }
     stages {
         stage('Build') {
