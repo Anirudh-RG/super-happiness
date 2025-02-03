@@ -1,1 +1,1 @@
-echo "Hello world from shell scr"
+echo "Hello world"
