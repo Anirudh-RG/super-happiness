@@ -4,29 +4,25 @@ pipeline {
         BASH = 'C:\\Users\\Anirudh\\AppData\\Local\\Programs\\Git\\bin\\bash.exe'
     }
     stages {
-        stage('Verify Environment') {
-            steps  {
-                bat 'echo %BASH%'
-                bat 'echo %PATH%'
-            }
-    }
-        stage('Install and run vite ') {
+        stage('Build') {
             steps {
-                echo "starting with installation"
-                bat "${env.BASH} scripts/stage1.sh"
-                echo "done with install"
+                echo "Starting build process..."
+                bat 'npm install'
+                bat 'npm run build'
+                echo "Build completed, dist/ folder created."
             }
         }
-        stage('Wait for user termination'){
-            steps{
-                input message: 'Click OK to terminate server',parameters:[]
-
+        stage('Terraform Ops') {
+            steps {
+                script {
+                    bat "${env.BASH} scripts/terraform-deploy.sh"
+                }
             }
         }
-        stage('Stop dev server'){
-            steps{
-                script{
-                    bat "${env.BASH} scripts/kill.sh"
+        stage('Output URL') {
+            steps {
+                script {
+                    bat 'terraform output website_url'
                 }
             }
         }

@@ -9,7 +9,7 @@ npm install
 
 # Start the Vite dev server in the background
 echo "Starting the development server..."
-npm run dev &
+npm run build &
 
 # Capture the PID of the background server
 VITE_PID=$!

@@ -22,3 +22,19 @@ tree.txt
 *.njsproj
 *.sln
 *.sw?
+# Ignore Terraform state files and backups
+*.tfstate
+*.tfstate.backup
+
+# Ignore Terraform crash logs
+crash.log
+
+# Ignore Terraform lock files
+.terraform.lock.hcl
+
+# Ignore Terraform working directory
+.terraform/
+
+# Ignore Terraform variables if they contain secrets
+terraform.tfvars
+terraform.tfvars.json
