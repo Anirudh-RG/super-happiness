@@ -1,10 +1,18 @@
 pipeline {
     agent any
+    environment {
+        BASH = 'C:\\Users\\Anirudh\\AppData\\Local\\Programs\\Git\\bin\\bash.exe'
+    }
     stages {
-        stage('Stage 1') {
+        stage('Verify Environment') {
+            steps  {
+                bat 'echo %BASH%'
+                bat 'echo %PATH%'
+            }
+    }
+        stage('Install and run vite ') {
             steps {
-                echo 'Hello world!' 
-                sh 'wsl ./scripts/stage1.sh'
+                bat "${env.BASH} scripts/stage1.sh"
             }
         }
     }
