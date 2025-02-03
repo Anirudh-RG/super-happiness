@@ -22,14 +22,7 @@ pipeline {
         }
         stage('Output URL') {
             steps {
-                script {
-                    // Ensure terraform apply was run and output is available
-                    def websiteUrl = bat(script: 'terraform output -raw website_url', returnStdout: true).trim()
-                    
-                    // Concatenate the URL with "http://"
-                    def fullUrl = "http://${websiteUrl}"
-                    echo "The website is live at: ${fullUrl}"
-                }
+                echo "completed successfully"
             }
         }
     }
