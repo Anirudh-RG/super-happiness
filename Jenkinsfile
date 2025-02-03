@@ -16,9 +16,7 @@ pipeline {
         stage('Terraform Ops') {
             steps {
                 script {
-                    withAws(credentials: AWS_CREDS){
-                        bat "${env.BASH} scripts/terraform-deploy.sh"
-                    }
+                    bat "${env.BASH} scripts/terraform-deploy.sh"    
                 }
             }
         }
