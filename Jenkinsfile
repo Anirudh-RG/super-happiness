@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         BASH = 'C:\\Users\\Anirudh\\AppData\\Local\\Programs\\Git\\bin\\bash.exe'
+        AWS_CREDS = 'anirudh-aws-creds'
     }
     stages {
         stage('Build') {
@@ -15,7 +16,9 @@ pipeline {
         stage('Terraform Ops') {
             steps {
                 script {
-                    bat "${env.BASH} scripts/terraform-deploy.sh"
+                    withAws(credentials: AWS_CREDS){
+                        bat "${env.BASH} scripts/terraform-deploy.sh"
+                    }
                 }
             }
         }
