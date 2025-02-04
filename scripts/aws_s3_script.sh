@@ -1,4 +1,4 @@
-aws s3api create-bucket --bucket data-store-02 --region ap-south-1
+aws s3api create-bucket --bucket data-store-02 --region ap-south-1 --create-bucket-configuration LocationConstraint=ap-south-1
 echo "bucket created"
 
 echo '{
