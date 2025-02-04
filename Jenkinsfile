@@ -13,16 +13,18 @@ pipeline {
                 echo "Build completed, dist/ folder created."
             }
         }
-        stage('Terraform Ops') {
+        stage('S3 ops through command line') {
             steps {
+                echo "started s3 ops"
                 script {
-                    bat "${env.BASH} scripts/terraform-deploy.sh"    
+                    bat "${env.BASH} scripts/aws_s3_script.sh"    
                 }
+                echo "finished with s3 ops"
             }
         }
         stage('Output URL') {
             steps {
-                echo "completed successfully"
+                echo "http://data-store-02.s3-website-ap-south-1.amazonaws.com"
             }
         }
     }
