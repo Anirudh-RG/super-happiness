@@ -1,6 +1,7 @@
 aws s3api create-bucket --bucket data-store-02 --region ap-south-1 --create-bucket-configuration LocationConstraint=ap-south-1
 echo "bucket created"
-
+sleep 15
+echo "sleep has finished"
 echo '{
   "Version": "2012-10-17",
   "Statement": [
