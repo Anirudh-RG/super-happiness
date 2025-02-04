@@ -3,13 +3,13 @@ echo "bucket created"
 sleep 60
 echo "sleep has finished"
 
-aws s3api put-bucket-acl --bucket data-store-02 --acl public-read
 aws s3api put-public-access-block --bucket data-store-02 --public-access-block-configuration '{
   "BlockPublicAcls": false,
   "IgnorePublicAcls": false,
   "BlockPublicPolicy": false,
   "RestrictPublicBuckets": false
 }'
+aws s3api put-bucket-acl --bucket data-store-02 --acl public-read
 
 echo '{
   "Version": "2012-10-17",
