@@ -1,6 +1,5 @@
 aws s3api create-bucket --bucket data-store-02 --region ap-south-1 --create-bucket-configuration LocationConstraint=ap-south-1
 echo "bucket created"
-sleep 60
 echo "sleep has finished"
 
 aws s3api put-public-access-block --bucket data-store-02 --public-access-block-configuration '{
