@@ -2,6 +2,15 @@ aws s3api create-bucket --bucket data-store-02 --region ap-south-1 --create-buck
 echo "bucket created"
 sleep 60
 echo "sleep has finished"
+
+aws s3api put-bucket-acl --bucket data-store-02 --acl public-read
+aws s3api put-public-access-block --bucket data-store-02 --public-access-block-configuration '{
+  "BlockPublicAcls": false,
+  "IgnorePublicAcls": false,
+  "BlockPublicPolicy": false,
+  "RestrictPublicBuckets": false
+}'
+
 echo '{
   "Version": "2012-10-17",
   "Statement": [
@@ -18,16 +27,7 @@ echo '{
 aws s3api put-bucket-policy --bucket data-store-02 --policy file://bucket-policy.json
 echo "policy added"
 
-aws s3api put-public-access-block --bucket data-store-02 --public-access-block-configuration '{
-  "BlockPublicAcls": false,
-  "IgnorePublicAcls": false,
-  "BlockPublicPolicy": false,
-  "RestrictPublicBuckets": false
-}'
-echo "public access block settings updated"
 
-aws s3api put-bucket-acl --bucket data-store-02 --acl public-read
-echo "bucket ACL updated"
 
 aws s3 cp dist/ s3://data-store-02/ --recursive
 aws s3 website s3://data-store-02 --index-document index.html --error-document index.html
