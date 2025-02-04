@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Output URL') {
             steps {
-                echo "http://data-store-02.s3-website-ap-south-1.amazonaws.com"
+                echo "http://data-store-02.s3-website.ap-south-1.amazonaws.com"
             }
         }
     }
