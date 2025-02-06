@@ -9,6 +9,6 @@ terraform {
 
 provider "aws" {
     region = var.BUCKET_REGION
-    profile = "anirudh-power"
+    profile = "anirudh-admin"
     #config opts
 }
